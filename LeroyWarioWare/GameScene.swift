@@ -10,17 +10,22 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var lives = 3
+    let label = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
+    
     public var gameRunTime = 0
     
     override func sceneDidLoad(){
         makeBackground();
        // cycling();
-        for family in UIFont.familyNames {
-            print("Font Family: \(family)")
-            for font in UIFont.fontNames(forFamilyName: family) {
-                print("Font: \(font)")
-            }
-        }
+        //fix this make it real
+        label.position = CGPoint(x: 380, y: 190)
+        label.fontSize = 50
+        label.zPosition = 30
+        label.fontName = "WarioWare,Inc.MegaMicrogame$Big"
+        label.fontColor = UIColor.red
+        label.text = "You have \(lives) lives left!!!"
+        addChild(label)
 
         
         
@@ -66,11 +71,11 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         gameRunTime += 1
-        if(gameRunTime == 50){ //when it goes to sammy
+        if(gameRunTime == 50){ //when it goes to sammy  keep it on 50 
             //swaps to sammys scene
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
-                let sammy = SammySoy(size: view.bounds.size)
+                let sammy = BatSwat(size: view.bounds.size)
                 let transition = SKTransition.fade(withDuration: 0.4)
                 view.presentScene(sammy, transition: transition)
             }

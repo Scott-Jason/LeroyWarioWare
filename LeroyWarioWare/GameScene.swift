@@ -10,10 +10,18 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    public var gameRunTime = 0
     
     override func sceneDidLoad(){
         makeBackground();
        // cycling();
+        for family in UIFont.familyNames {
+            print("Font Family: \(family)")
+            for font in UIFont.fontNames(forFamilyName: family) {
+                print("Font: \(font)")
+            }
+        }
+
         
         
         
@@ -57,6 +65,17 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        gameRunTime += 1
+        if(gameRunTime == 2){ //when it goes to sammy
+            //swaps to sammys scene
+            if let view = self.view {
+                // Assuming NewGameScene is the name of your new GameScene class
+                let sammy = SammySoy(size: view.bounds.size)
+                let transition = SKTransition.fade(withDuration: 0.4)
+                view.presentScene(sammy, transition: transition)
+            }
+        }
+        
     }
     
     func makeBackground(){
@@ -73,9 +92,9 @@ class GameScene: SKScene {
         
         houseS = SKSpriteNode(texture: houseTexture[0])
         houseS.zPosition = 0
-        houseS.position = CGPoint(x: 40, y: -40)
-        houseS.yScale = 2.1
-        houseS.xScale = 0.7
+        houseS.position = CGPoint(x: 40, y: 0)
+        houseS.yScale = 0.5
+        houseS.xScale = 1
         addChild(houseS)
             
         //house changing pixelation on loop

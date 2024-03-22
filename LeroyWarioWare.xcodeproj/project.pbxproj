@@ -15,8 +15,8 @@
 		5382620C2BAB549B007FC93F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5382620A2BAB549B007FC93F /* Main.storyboard */; };
 		5382620E2BAB549C007FC93F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5382620D2BAB549C007FC93F /* Assets.xcassets */; };
 		538262112BAB549C007FC93F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5382620F2BAB549C007FC93F /* LaunchScreen.storyboard */; };
+		53911D212BAD2C4200A336FD /* wario.otf in Resources */ = {isa = PBXBuildFile; fileRef = 53911D202BAD2C4200A336FD /* wario.otf */; };
 		53B268A62BAD112400FE61C7 /* SammySoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B268A52BAD112400FE61C7 /* SammySoy.swift */; };
-		53B268AA2BAD276F00FE61C7 /* WARIO.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53B268A92BAD276F00FE61C7 /* WARIO.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +29,8 @@
 		5382620B2BAB549B007FC93F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5382620D2BAB549C007FC93F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		538262102BAB549C007FC93F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		53911D202BAD2C4200A336FD /* wario.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wario.otf; sourceTree = "<group>"; };
 		53B268A52BAD112400FE61C7 /* SammySoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammySoy.swift; sourceTree = "<group>"; };
-		53B268A92BAD276F00FE61C7 /* WARIO.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WARIO.ttf; path = "../../../../Downloads/warioware-inc-mega-microgame-big/WARIO.ttf"; sourceTree = "<group>"; };
 		53B268AB2BAD286000FE61C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,7 +74,7 @@
 				5382620A2BAB549B007FC93F /* Main.storyboard */,
 				5382620D2BAB549C007FC93F /* Assets.xcassets */,
 				5382620F2BAB549C007FC93F /* LaunchScreen.storyboard */,
-				53B268A92BAD276F00FE61C7 /* WARIO.ttf */,
+				53911D202BAD2C4200A336FD /* wario.otf */,
 			);
 			path = LeroyWarioWare;
 			sourceTree = "<group>";
@@ -137,9 +137,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53B268AA2BAD276F00FE61C7 /* WARIO.ttf in Resources */,
 				5382620C2BAB549B007FC93F /* Main.storyboard in Resources */,
 				538262032BAB549B007FC93F /* GameScene.sks in Resources */,
+				53911D212BAD2C4200A336FD /* wario.otf in Resources */,
 				5382620E2BAB549C007FC93F /* Assets.xcassets in Resources */,
 				538262112BAB549C007FC93F /* LaunchScreen.storyboard in Resources */,
 				538262052BAB549B007FC93F /* Actions.sks in Resources */,

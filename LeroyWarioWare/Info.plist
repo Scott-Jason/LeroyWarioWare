@@ -4,7 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>WARIO.tff</string>
+		<string>wario.otf</string>
 	</array>
 </dict>
 </plist>

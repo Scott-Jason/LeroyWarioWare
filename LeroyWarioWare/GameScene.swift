@@ -66,7 +66,7 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         gameRunTime += 1
-        if(gameRunTime == 2){ //when it goes to sammy
+        if(gameRunTime == 50){ //when it goes to sammy
             //swaps to sammys scene
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class

@@ -15,7 +15,7 @@ class SammySoy: SKScene {
     var drop = SKSpriteNode()
     var hitbox = SKSpriteNode()
  //   let customFont = UIFont(name: "wariofont", size: 16.0)// check if this works
-    let label = SKLabelNode(fontNamed: "WARIO")
+    let label = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
   
 
     var sx = 75
@@ -90,7 +90,7 @@ class SammySoy: SKScene {
         //game goes back to menu hud
         
         if(drop.frame.intersects(hitbox.frame)){
-            print("yippe")
+            label.text = "Wow, Soytastic!"
             //go back to menu
         }
         
@@ -117,11 +117,11 @@ class SammySoy: SKScene {
         hitbox.yScale = 0.1
         hitbox.zPosition = 0 // behind everything
         addChild(hitbox)
-        label.position = CGPoint(x: 30, y: 50)
+        label.position = CGPoint(x: 380, y: 190)
         label.fontSize = 50
         label.zPosition = 30
-        label.fontName = "wariofont.ttf"
-        label.text = "BRUH"
+        label.fontName = "WarioWare,Inc.MegaMicrogame$Big"
+        label.text = "Squirt!"
         addChild(label)
       
     }

@@ -10,8 +10,15 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    
+    override func sceneDidLoad(){
+        makeBackground();
+       // cycling();
+        
+        
+        
+        
+    }
     
     override func didMove(to view: SKView) {
         
@@ -50,5 +57,34 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+    
+    func makeBackground(){
+        let houseTexture: [SKTexture] = [
+            SKTexture(imageNamed: "house1"),
+            SKTexture(imageNamed: "house2")
+          ]
+        
+        var houseS: SKSpriteNode
+       
+        for texture in houseTexture {
+            texture.filteringMode = .nearest
+        }
+        
+        houseS = SKSpriteNode(texture: houseTexture[0])
+        houseS.zPosition = 0
+        houseS.position = CGPoint(x: 40, y: -40)
+        houseS.yScale = 2.1
+        houseS.xScale = 0.7
+        addChild(houseS)
+            
+        //house changing pixelation on loop
+        func cycling(){
+            
+            let cycleTime = SKAction.animate(with:houseTexture, timePerFrame: 0.2)
+            let repeatForever = SKAction.repeatForever(cycleTime)
+            houseS.run(repeatForever)
+        }
+        cycling();
     }
 }

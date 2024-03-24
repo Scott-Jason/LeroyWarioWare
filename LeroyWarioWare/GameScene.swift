@@ -8,6 +8,8 @@
 import SpriteKit
 import GameplayKit
 
+var oh = 0
+
 class GameScene: SKScene {
     
     var lives = 3
@@ -16,7 +18,7 @@ class GameScene: SKScene {
     public var gameRunTime = 0
     
     override func sceneDidLoad(){
-        makeBackground();
+        makeBackground()
        // cycling();
         //fix this make it real
         label.position = CGPoint(x: 380, y: 190)
@@ -26,6 +28,7 @@ class GameScene: SKScene {
         label.fontColor = UIColor.red
         label.text = "You have \(lives) lives left!!!"
         addChild(label)
+        //makeBackground();
 
         
         
@@ -71,11 +74,22 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         gameRunTime += 1
-        if(gameRunTime == 50){ //when it goes to sammy  keep it on 50 
+        if(oh == 0){
+            oh += 1
+            if let view = self.view {
+                // Assuming NewGameScene is the name of your new GameScene class
+                let sammy = GameScene(size: view.bounds.size)
+                let transition = SKTransition.fade(withDuration: 0.4)
+                view.presentScene(sammy, transition: transition)
+            }
+            
+            
+        }
+        if(gameRunTime == 4){ //when it goes to sammy  keep it on 50
             //swaps to sammys scene
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
-                let sammy = BatSwat(size: view.bounds.size)
+                let sammy = doomScroll(size: view.bounds.size)
                 let transition = SKTransition.fade(withDuration: 0.4)
                 view.presentScene(sammy, transition: transition)
             }
@@ -91,14 +105,12 @@ class GameScene: SKScene {
         
         var houseS: SKSpriteNode
        
-        for texture in houseTexture {
-            texture.filteringMode = .nearest
-        }
+      
         
         houseS = SKSpriteNode(texture: houseTexture[0])
-        houseS.zPosition = 0
-        houseS.position = CGPoint(x: 40, y: 0)
-        houseS.yScale = 0.5
+        houseS.zPosition = 1
+        houseS.position = CGPoint(x: 400, y: 186)
+        houseS.yScale = 0.6
         houseS.xScale = 1
         addChild(houseS)
             

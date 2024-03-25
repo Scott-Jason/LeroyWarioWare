@@ -83,6 +83,8 @@ class doomScroll: SKScene {
         let previousLocation = touch.previousLocation(in: self)
       
         // Calculate the difference in the Y direction
+        
+        //this needs to be fixed
         let deltaY = touchLocation.y - previousLocation.y
         sum += Int(deltaY)
         print(sum)

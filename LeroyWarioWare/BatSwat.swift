@@ -177,7 +177,7 @@ class BatSwat: SKScene {
             bat.removeFromParent()
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
-                let sammy = SammySoy(size: view.bounds.size)
+                let sammy = doomScroll(size: view.bounds.size)
                 let transition = SKTransition.fade(withDuration: 0.8)
                 view.presentScene(sammy, transition: transition)
             }

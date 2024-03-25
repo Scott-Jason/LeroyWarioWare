@@ -94,7 +94,7 @@ class SammySoy: SKScene {
             //go back to menu
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
-                let sammy = GameScene(size: view.bounds.size)
+                let sammy = BatSwat(size: view.bounds.size)
                 let transition = SKTransition.fade(withDuration: 0.8)
                 view.presentScene(sammy, transition: transition)
             }

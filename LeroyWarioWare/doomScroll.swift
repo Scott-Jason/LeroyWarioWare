@@ -137,7 +137,7 @@ class doomScroll: SKScene {
         case 2:
             screen3.position = CGPoint(x:sx, y:sy)
         default:
-            var ok = 1
+            var _ = 1
         }
         
         //game goes back to menu hud

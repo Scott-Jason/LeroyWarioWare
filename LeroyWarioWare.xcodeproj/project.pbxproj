@@ -16,6 +16,8 @@
 		5382620E2BAB549C007FC93F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5382620D2BAB549C007FC93F /* Assets.xcassets */; };
 		538262112BAB549C007FC93F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5382620F2BAB549C007FC93F /* LaunchScreen.storyboard */; };
 		53911D212BAD2C4200A336FD /* wario.otf in Resources */ = {isa = PBXBuildFile; fileRef = 53911D202BAD2C4200A336FD /* wario.otf */; };
+		53A1E8142BB24AC800E0736C /* bgSammy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8132BB24AC800E0736C /* bgSammy.mp3 */; };
+		53A1E8182BB2558700E0736C /* drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8172BB2558700E0736C /* drop.wav */; };
 		53B268A62BAD112400FE61C7 /* SammySoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B268A52BAD112400FE61C7 /* SammySoy.swift */; };
 		53D365C62BADCAA1004F10AF /* BatSwat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D365C52BADCAA1004F10AF /* BatSwat.swift */; };
 		53D365D22BAFB858004F10AF /* doomScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D365D12BAFB858004F10AF /* doomScroll.swift */; };
@@ -33,6 +35,8 @@
 		5382620D2BAB549C007FC93F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		538262102BAB549C007FC93F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53911D202BAD2C4200A336FD /* wario.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wario.otf; sourceTree = "<group>"; };
+		53A1E8132BB24AC800E0736C /* bgSammy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgSammy.mp3; sourceTree = "<group>"; };
+		53A1E8172BB2558700E0736C /* drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drop.wav; sourceTree = "<group>"; };
 		53B268A52BAD112400FE61C7 /* SammySoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammySoy.swift; sourceTree = "<group>"; };
 		53B268AB2BAD286000FE61C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		53D365C52BADCAA1004F10AF /* BatSwat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatSwat.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				5382620D2BAB549C007FC93F /* Assets.xcassets */,
 				5382620F2BAB549C007FC93F /* LaunchScreen.storyboard */,
 				53911D202BAD2C4200A336FD /* wario.otf */,
+				53A1E8132BB24AC800E0736C /* bgSammy.mp3 */,
+				53A1E8172BB2558700E0736C /* drop.wav */,
 			);
 			path = LeroyWarioWare;
 			sourceTree = "<group>";
@@ -147,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5382620C2BAB549B007FC93F /* Main.storyboard in Resources */,
+				53A1E8182BB2558700E0736C /* drop.wav in Resources */,
+				53A1E8142BB24AC800E0736C /* bgSammy.mp3 in Resources */,
 				538262032BAB549B007FC93F /* GameScene.sks in Resources */,
 				53911D212BAD2C4200A336FD /* wario.otf in Resources */,
 				5382620E2BAB549C007FC93F /* Assets.xcassets in Resources */,

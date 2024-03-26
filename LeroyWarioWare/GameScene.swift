@@ -9,10 +9,13 @@ import SpriteKit
 import GameplayKit
 
 var oh = 0
+//when return back here play something based off win or lose
+var win = false
+var lives = 3
 
 class GameScene: SKScene {
     
-    var lives = 3
+    
     let label = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
     
     public var gameRunTime = 0
@@ -82,14 +85,18 @@ class GameScene: SKScene {
                 let transition = SKTransition.fade(withDuration: 0.4)
                 view.presentScene(sammy, transition: transition)
             }
-            
-            
         }
+        
+        if(win == false && oh != 0){
+            label.text = "So close! \(lives) left!"
+            // genereate different effects if win or lose then update sep varaible to get to different minigames
+        }
+        
         if(gameRunTime == 4){ //when it goes to sammy  keep it on 50
             //swaps to sammys scene
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
-                let sammy = Coffee(size: view.bounds.size)
+                let sammy = SammySoy(size: view.bounds.size)
                 let transition = SKTransition.fade(withDuration: 0.4)
                 view.presentScene(sammy, transition: transition)
             }

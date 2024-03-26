@@ -15,6 +15,7 @@ class Coffee: SKScene {
     
     var lock = false
     var whichScreen = 0
+    var nextPart = false
     
     
     //some are unused thats ok
@@ -92,11 +93,14 @@ class Coffee: SKScene {
                 }
                 actions.append(contentsOf: [wait, updateText])
             }
-            label.run(SKAction.sequence(actions))
+            label.run(SKAction.sequence(actions)){
+                self.nextPart = true
+            }
         }
         
         //collision with touch and label frame
-        if(label3.frame.contains(current)){
+        
+        if(label3.frame.contains(current) && nextPart == false){
             
             let cycleTime = SKAction.animate(with:evilTexture, timePerFrame: 0.09)
             let repeatForever = SKAction.repeatForever(cycleTime)
@@ -109,12 +113,20 @@ class Coffee: SKScene {
             writeTextSlowly(text: textToWrite, duration: durationPerCharacter, label: label)
             
         }
+        
+        if(label2.frame.contains(current) && nextPart == true){
+            //soiething
+        }
     }
     
     
     override func update(_ currentTime: TimeInterval) {
        
         //dont need anything for this one i think
+        if(lock == false && nextPart == true){
+            lock = true
+            nextPartFunc()
+        }
         
     }
     
@@ -166,6 +178,13 @@ class Coffee: SKScene {
         let repeatForever = SKAction.repeatForever(cycleTime)
         hand.run(repeatForever)
         addChild(hand)
+    }
+    
+    func nextPartFunc(){
+        label.text = "Coffee spelled backwards is.."
+        label1.text = "FEEOC"
+        label2.text = "EEFOK"
+        label3.text = "EEFOC"
     }
 }
 

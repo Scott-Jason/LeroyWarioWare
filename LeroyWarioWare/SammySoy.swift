@@ -10,12 +10,22 @@ import GameplayKit
 
 class SammySoy: SKScene {
     
+    
+    
+    
+    let sound = SKAction.playSoundFileNamed("bgSammy", waitForCompletion: false)
     var milk = SKSpriteNode()
     var hitScreen = false
     var drop = SKSpriteNode()
     var hitbox = SKSpriteNode()
  //   let customFont = UIFont(name: "wariofont", size: 16.0)// check if this works
-    let label = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
+    var label = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
+    
+    var gameT = 0
+    
+    var timerNode = SKShapeNode()
+    var remainingTime: CGFloat = 2.0  // Initial remaining time
+    let totalTime: CGFloat = 2.0  // Total time for the timer in seconds
   
 
     var sx = 75
@@ -77,10 +87,30 @@ class SammySoy: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
+        
+        gameT += 1
+        
+        timerNode.xScale = remainingTime / totalTime
+        if(gameT % 10 == 0){
+            remainingTime -= 0.1
+        }
+        
+        if(remainingTime < 0.0){
+            label.text = "its over"
+            if let view = self.view {
+                // Assuming NewGameScene is the name of your new GameScene class
+                let sammy = GameScene(size: view.bounds.size)
+                let transition = SKTransition.fade(withDuration: 0.8)
+                view.presentScene(sammy, transition: transition)
+            }
+        }
+        //remainingTime -= CGFloat(self.deltaTime)
+        
+        
         // Called before each frame is rendered
         sx += sm
         dy -= 8
-        if(sx > 750 || sx < 75){
+        if(sx > 500 || sx < 75){
             sm *= -1
             
         }
@@ -91,13 +121,9 @@ class SammySoy: SKScene {
         
         if(drop.frame.intersects(hitbox.frame)){
             label.text = "Wow, Soytastic!"
+            win = true
             //go back to menu
-            if let view = self.view {
-                // Assuming NewGameScene is the name of your new GameScene class
-                let sammy = BatSwat(size: view.bounds.size)
-                let transition = SKTransition.fade(withDuration: 0.8)
-                view.presentScene(sammy, transition: transition)
-            }
+            
         }
         
         
@@ -129,6 +155,15 @@ class SammySoy: SKScene {
         label.fontName = "WarioWare,Inc.MegaMicrogame$Big"
         label.text = "Squirt!"
         addChild(label)
+        black.run(sound)
+        
+        //timer
+        timerNode = SKShapeNode(rectOf: CGSize(width: remainingTime*50, height: 5))
+        timerNode.position = CGPoint(x: size.width - 50, y: size.height/2)
+        timerNode.zPosition = 8
+        timerNode.fillColor = .green  // Initial color
+        timerNode.zRotation = .pi/2
+        addChild(timerNode)
       
     }
     
@@ -140,6 +175,9 @@ class SammySoy: SKScene {
         drop.xScale = 3
         drop.yScale = 3
         addChild(drop)
+        var sound = SKAction.playSoundFileNamed("drop", waitForCompletion: false)
+      //  sound = SKAction.changeVolume(to: 1.0, duration: 2)
+        drop.run(sound)
     }
     
     func makeSoy(){

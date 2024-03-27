@@ -96,7 +96,7 @@ class GameScene: SKScene {
             //swaps to sammys scene
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
-                let sammy = SammySoy(size: view.bounds.size)
+                let sammy = doomScroll(size: view.bounds.size)
                 let transition = SKTransition.fade(withDuration: 0.4)
                 view.presentScene(sammy, transition: transition)
             }

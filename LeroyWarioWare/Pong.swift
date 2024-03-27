@@ -1,17 +1,16 @@
 //
-//  COFFEE.swift
+//  pong.swift
 //  LeroyWarioWare
 //
-//  Created by Jason Scott on 3/25/24.
-// gonna try to set this file up as more of a generic blueprint for other microgames
-// add stuff that happens if you click the wrong label, also can make panel 2 eefoc if want
+//  Created by Jason Scott on 3/26/24.
+// yafer pong minigame WIP
 
 
 
 import SpriteKit
 import GameplayKit
 
-class Coffee: SKScene {
+class Pong: SKScene {
     
     var lock = false
     var whichScreen = 0
@@ -19,13 +18,14 @@ class Coffee: SKScene {
     
     
     var gameT = 0
-    
+    //Music
     let sound = SKAction.playSoundFileNamed("bgEffoc", waitForCompletion: false)
+    //Timer
     var timerNode = SKShapeNode()
     var remainingTime: CGFloat = 3.8  // Initial remaining time (does it like 2.0 = 4 sec for some reaosn)
     let totalTime: CGFloat = 3.8 // Total time for the timer in seconds
     
-    //some are unused thats ok
+    //SpriteNodes
     var arrow = SKSpriteNode()
     var screen2 = SKSpriteNode()
     var screen3 = SKSpriteNode()
@@ -33,17 +33,20 @@ class Coffee: SKScene {
     var hand = SKSpriteNode()
     var hitbox = SKSpriteNode()
  
-    //wario labels
+    //Labels
     let label = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
     let label1 = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
     let label2 = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
     let label3 = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
   
-
+    //Movement Variables
     var sx = 380 - 100
     var sy = 170
     var sm = 7
     var dy = 0
+    
+    
+    //Textures & Actions
     
     let shake = SKAction.sequence([
         SKAction.moveBy(x: -10, y: 5, duration: 0.13),
@@ -57,26 +60,14 @@ class Coffee: SKScene {
                 
             ])
     
+    
+    
     let michaelTexture: [SKTexture] = [
         SKTexture(imageNamed: "michael1"),
         SKTexture(imageNamed: "michael2")
       ]
     
-    let theoTexture: [SKTexture] = [
-        SKTexture(imageNamed: "Tsmile"),
-        SKTexture(imageNamed: "Tsmile2")
-      ]
-    
-    let theoCTexture: [SKTexture] = [
-        SKTexture(imageNamed: "Tconfuse"),
-        SKTexture(imageNamed: "Tconfuse2")
-      ]
-    
-    let evilTexture: [SKTexture] = [
-        SKTexture(imageNamed: "michael3"),
-        SKTexture(imageNamed: "michael4")
-      ]
-    
+
     
     
     override func sceneDidLoad(){
@@ -100,42 +91,10 @@ class Coffee: SKScene {
         guard let touch = touches.first else { return }
         let current = touch.location(in: self)
         
-        //func for writing text slowly, can put outside this func if i want to use it more
-        func writeTextSlowly(text: String, duration: TimeInterval, label: SKLabelNode) {
-            var actions: [SKAction] = []
-            for (index, _) in text.enumerated() {
-                let wait = SKAction.wait(forDuration: duration * TimeInterval(index))
-                let updateText = SKAction.run {
-                    label.text = String(text.prefix(index + 1))
-                }
-                actions.append(contentsOf: [wait, updateText])
-            }
-            label.run(SKAction.sequence(actions)){
-                self.nextPart = true
-            }
-        }
         
-        //collision with touch and label frame
         
-        if(label3.frame.contains(current) && nextPart == false){
-            
-            let cycleTime = SKAction.animate(with:evilTexture, timePerFrame: 0.09)
-            let repeatForever = SKAction.repeatForever(cycleTime)
-            hand.run(repeatForever)
-            label3.text = "Correct!"
-            label.removeAllActions()
-            let textToWrite = "He said Richter..."
-            let durationPerCharacter: TimeInterval = 0.005
-                // label.text = "He said Richter..."
-            writeTextSlowly(text: textToWrite, duration: durationPerCharacter, label: label)
-            
-        }
         
-        if(label2.frame.contains(current) && nextPart == true){
-            let cycleTime = SKAction.animate(with:theoTexture, timePerFrame: 0.09)
-            let repeatForever = SKAction.repeatForever(cycleTime)
-            hand.run(repeatForever)
-        }
+      
     }
     
     
@@ -149,11 +108,7 @@ class Coffee: SKScene {
             remainingTime -= 0.1
         }
         
-        //dont need anything for this one i think
-        if(lock == false && nextPart == true){
-            lock = true
-            nextPartFunc()
-        }
+      
         
     }
     
@@ -165,7 +120,7 @@ class Coffee: SKScene {
         background.xScale = 5
         background.yScale = 4
         addChild(background)
-        background.run(sound)
+        background.run(sound) //playing music
         
         //timer
         timerNode = SKShapeNode(rectOf: CGSize(width: remainingTime*50, height: 5))
@@ -224,9 +179,9 @@ class Coffee: SKScene {
         label1.text = "FEEOC"
         label2.text = "EEFOC"
         label3.text = "EEFOK"
-        let cycleTime = SKAction.animate(with:theoCTexture, timePerFrame: 0.09)
-        let repeatForever = SKAction.repeatForever(cycleTime)
-        hand.run(repeatForever)
+    //    let cycleTime = SKAction.animate(with:theoCTexture, timePerFrame: 0.09)
+     //   let repeatForever = SKAction.repeatForever(cycleTime)
+       // hand.run(repeatForever)
         //add theo
         
     }

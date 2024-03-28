@@ -1,34 +1,33 @@
 //
-//  pong.swift
+//  template.swift
 //  LeroyWarioWare
 //
-//  Created by Jason Scott on 3/26/24.
-// yafer pong minigame WIP
+//  Created by Jason Scott on 3/27/24.
+
+
+
 
 import SpriteKit
 import GameplayKit
 
-class Pong: SKScene {
+class template: SKScene {
     
-    var lock = 0
-    //random int when he throws vs not game delay between 2 videos
-    var random = Int.random(in: 1...5)
+    var lock = false
  
+ 
+    
+    
     
     //Music
     let sound = SKAction.playSoundFileNamed("bgEffoc", waitForCompletion: false)
     //Timer
     var gameT = 0
+   
     
     //SpriteNodes
-    
-    let yafer = SKVideoNode(fileNamed: "sample.mov")
-    
-    //video of yafer throwing up a pong ball
-    
     var hitScreen = false
-    var ball = SKSpriteNode()
-    var paddle = SKSpriteNode()
+    var asset = SKSpriteNode()
+    var asset2 = SKSpriteNode()
     var asset3 = SKSpriteNode()
     var hitbox = SKSpriteNode()
  
@@ -45,18 +44,23 @@ class Pong: SKScene {
     var dy = 0
     
     
-    
-    
     //Textures & Actions
     
-    // how to make these happen at the same time
+    let shake = SKAction.sequence([
+        SKAction.moveBy(x: -10, y: 5, duration: 0.13),
+        SKAction.moveBy(x: 10, y: -5, duration: 0.09),
+        SKAction.moveBy(x: -10, y: 5, duration: 0.14),
+        SKAction.moveBy(x: 10, y: -5, duration: 0.09),
+        SKAction.moveBy(x: -3, y: 8 , duration: 0.08),
+        SKAction.moveBy(x: 3, y: -8 , duration: 0.11),
+        SKAction.moveBy(x: -12, y: -5  , duration:0.1 ),
+        SKAction.moveBy(x: 12, y:  5, duration: 0.06)
+                
+            ])
     
     
-
     
-    
-    // 3 panels of a transparent hand hitting pong back
-    let swingTexture: [SKTexture] = [
+    let michaelTexture: [SKTexture] = [
         SKTexture(imageNamed: "michael1"),
         SKTexture(imageNamed: "michael2")
       ]
@@ -65,18 +69,10 @@ class Pong: SKScene {
     
     
     override func sceneDidLoad(){
-        remainingTime = 3.8
-        totalTime = 3.8
         makeBackground()
         makeFeature()
         makeFeature2()
-      //  makeFeature3()
-        
-        label.text = "Hi there \(random)"
-        label.position = CGPoint(x: 200, y:80)
-        label.zPosition = 8
-        addChild(label)
-        
+      
   
     }
     
@@ -86,6 +82,7 @@ class Pong: SKScene {
         let current = touch.location(in: self)
         
 
+      
     }
     
     
@@ -94,24 +91,12 @@ class Pong: SKScene {
         
         //updates timer
         gameT += 1
-        
-        if(gameT > random * 30 && lock == 0){
-            lock += 1
-            label.text = "changed now"
-            makeFeature3()
-        }
-        
-        if(gameT > (random * 30) + 30){
-            ball.removeAllActions()
-        }
-        
-        
-        
-        
         timerNode.xScale = remainingTime / totalTime
         if(gameT % 10 == 0){
             remainingTime -= 0.1
         }
+        
+      
         
     }
     
@@ -134,42 +119,26 @@ class Pong: SKScene {
         addChild(timerNode)
     }
     
-    
-    func makeFeature(){ //make pong paddle
-        paddle = SKSpriteNode(texture: swingTexture[0])
-        paddle.position = CGPoint(x: 400, y: 95)
-        paddle.zPosition = 1
-        paddle.xScale = 0.7
-        paddle.yScale = 0.35
-        addChild(paddle)
+    func makeFeature(){
+        //this will be hand that scrolls
+        label1.text = "Maggot Lord"
+        label1.position = CGPoint(x: sx, y: sy + 40)
+        label1.zPosition = 3
+        label1.fontSize = 30
+        addChild(label1)
     }
     
-    func makeFeature2(){ //swing
-        let swing = SKAction.animate(with:swingTexture, timePerFrame: 0.08)
-        paddle.run(swing)
-      
+    func makeFeature2(){
+        //this will be hand that scrolls
+        label2.text = "Booger Prince"
+        label2.position = CGPoint(x: sx, y: sy - 20 )
+        label2.zPosition = 4
+        label2.fontSize = 30
+        addChild(label2)
     }
     
-    func makeFeature3(){ //pong ball throw
-        ball = SKSpriteNode(imageNamed: "pball")
-        ball.position = CGPoint(x:size.width / 2 , y: size.height / 2)
-        ball.xScale = 0.2
-        ball.yScale = 0.2
-        ball.zPosition = 4
-        addChild(ball)
-        
-        let action1 = SKAction.moveBy(x: 0, y: -150, duration: 1.0)
-        let action2 = SKAction.rotate(byAngle: .pi, duration: 0.3)
-        let ac = SKAction.repeatForever(action2)
-        let big = SKAction.scale(by: 4, duration: 0.7)
-        
-        let zoom = SKAction.group([action1, ac, big])
-        ball.run(zoom)
-        
-            
-        
-    }
-    
+
+  
 
 }
 

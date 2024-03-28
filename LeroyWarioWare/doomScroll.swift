@@ -32,6 +32,13 @@ class doomScroll: SKScene {
     let label = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
     
     
+    //timer
+    var gameT = 0
+    
+
+    
+    
+    
     var sx = 380
     var sy = 170
     var screenSy = 140
@@ -40,6 +47,8 @@ class doomScroll: SKScene {
     
     
     override func sceneDidLoad(){
+        remainingTime = 2.0
+        totalTime = 2.0
         makeBackground()
         makeFeature()
         makeFeature2()
@@ -139,10 +148,21 @@ class doomScroll: SKScene {
         hand.position = CGPoint(x:sx + 230, y:sy - 160)
         screen.position = CGPoint(x:sx, y: screenSy-265)
       //  if(whichScreen == 3)
+        
+        //timerstuff
+        gameT += 1
+        
+        timerNode.xScale = remainingTime / totalTime
+        if(gameT % 10 == 0){
+            remainingTime -= 0.1
+        }
+        
         if(whichScreen == 3){
+            
             //add swap to game here and timer
             //add sound
         }
+        
         
         
         
@@ -158,6 +178,14 @@ class doomScroll: SKScene {
         background.xScale = 0.37
         background.yScale = 0.23
         addChild(background)
+        
+        //timer
+        timerNode = SKShapeNode(rectOf: CGSize(width: remainingTime*50, height: 5))
+        timerNode.position = CGPoint(x: size.width - 50, y: size.height/2)
+        timerNode.zPosition = 8
+        timerNode.fillColor = .green  // Initial color
+        timerNode.zRotation = .pi/2
+        addChild(timerNode)
         
     }
     

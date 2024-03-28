@@ -20,6 +20,7 @@
 		53A1E8182BB2558700E0736C /* drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8172BB2558700E0736C /* drop.wav */; };
 		53A1E81A2BB37DA900E0736C /* bgEffoc.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8192BB37DA900E0736C /* bgEffoc.mp3 */; };
 		53A1E81C2BB386C400E0736C /* Pong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A1E81B2BB386C400E0736C /* Pong.swift */; };
+		53A1E81E2BB4575B00E0736C /* template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A1E81D2BB4575B00E0736C /* template.swift */; };
 		53B268A62BAD112400FE61C7 /* SammySoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B268A52BAD112400FE61C7 /* SammySoy.swift */; };
 		53D365C62BADCAA1004F10AF /* BatSwat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D365C52BADCAA1004F10AF /* BatSwat.swift */; };
 		53D365D22BAFB858004F10AF /* doomScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D365D12BAFB858004F10AF /* doomScroll.swift */; };
@@ -41,6 +42,7 @@
 		53A1E8172BB2558700E0736C /* drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drop.wav; sourceTree = "<group>"; };
 		53A1E8192BB37DA900E0736C /* bgEffoc.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgEffoc.mp3; sourceTree = "<group>"; };
 		53A1E81B2BB386C400E0736C /* Pong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pong.swift; sourceTree = "<group>"; };
+		53A1E81D2BB4575B00E0736C /* template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = template.swift; sourceTree = "<group>"; };
 		53B268A52BAD112400FE61C7 /* SammySoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammySoy.swift; sourceTree = "<group>"; };
 		53B268AB2BAD286000FE61C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		53D365C52BADCAA1004F10AF /* BatSwat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatSwat.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				53B268A52BAD112400FE61C7 /* SammySoy.swift */,
 				53D365C52BADCAA1004F10AF /* BatSwat.swift */,
 				53A1E81B2BB386C400E0736C /* Pong.swift */,
+				53A1E81D2BB4575B00E0736C /* template.swift */,
 				538262082BAB549B007FC93F /* GameViewController.swift */,
 				5382620A2BAB549B007FC93F /* Main.storyboard */,
 				5382620D2BAB549C007FC93F /* Assets.xcassets */,
@@ -179,6 +182,7 @@
 			files = (
 				538262072BAB549B007FC93F /* GameScene.swift in Sources */,
 				53A1E81C2BB386C400E0736C /* Pong.swift in Sources */,
+				53A1E81E2BB4575B00E0736C /* template.swift in Sources */,
 				538262092BAB549B007FC93F /* GameViewController.swift in Sources */,
 				538262012BAB549B007FC93F /* AppDelegate.swift in Sources */,
 				53D365D22BAFB858004F10AF /* doomScroll.swift in Sources */,

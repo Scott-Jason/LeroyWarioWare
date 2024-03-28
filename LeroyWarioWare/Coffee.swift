@@ -21,9 +21,8 @@ class Coffee: SKScene {
     var gameT = 0
     
     let sound = SKAction.playSoundFileNamed("bgEffoc", waitForCompletion: false)
-    var timerNode = SKShapeNode()
-    var remainingTime: CGFloat = 3.8  // Initial remaining time (does it like 2.0 = 4 sec for some reaosn)
-    let totalTime: CGFloat = 3.8 // Total time for the timer in seconds
+  
+   
     
     //some are unused thats ok
     var arrow = SKSpriteNode()
@@ -80,6 +79,8 @@ class Coffee: SKScene {
     
     
     override func sceneDidLoad(){
+        remainingTime = 3.8
+        totalTime = 3.8
         makeBackground()
         makeFeature()
         makeFeature2()

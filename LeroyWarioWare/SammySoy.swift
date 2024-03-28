@@ -23,10 +23,6 @@ class SammySoy: SKScene {
     
     var gameT = 0
     
-    var timerNode = SKShapeNode()
-    var remainingTime: CGFloat = 2.0  // Initial remaining time
-    let totalTime: CGFloat = 2.0  // Total time for the timer in seconds
-  
 
     var sx = 75
     let sy = 320
@@ -35,30 +31,12 @@ class SammySoy: SKScene {
     
     
     override func sceneDidLoad(){
+        remainingTime = 2.0
+        totalTime = 2.0
         makeBackground();
         makeSoy();
         
-        
-        
-        
-    }
-    
-    override func didMove(to view: SKView) {
-        
-  
-    }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-     
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-      
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -73,19 +51,6 @@ class SammySoy: SKScene {
        
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-       
-    }
-    
-    
     override func update(_ currentTime: TimeInterval) {
         
         gameT += 1
@@ -96,7 +61,12 @@ class SammySoy: SKScene {
         }
         
         if(remainingTime < 0.0){
-            label.text = "its over"
+            if(win == false){
+                label.text = "its over"
+            }
+            if(win == true){
+                label.text = "goodjob!"
+            }
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
                 let sammy = GameScene(size: view.bounds.size)
@@ -104,8 +74,7 @@ class SammySoy: SKScene {
                 view.presentScene(sammy, transition: transition)
             }
         }
-        //remainingTime -= CGFloat(self.deltaTime)
-        
+      
         
         // Called before each frame is rendered
         sx += sm
@@ -123,7 +92,7 @@ class SammySoy: SKScene {
             label.text = "Wow, Soytastic!"
             win = true
             //go back to menu
-            
+
         }
         
         
@@ -171,7 +140,7 @@ class SammySoy: SKScene {
         drop = SKSpriteNode(imageNamed:"drop")
         drop.texture?.filteringMode = .nearest
         drop.position = CGPoint(x:sx+10, y:sy)
-        drop.zPosition = 5
+        drop.zPosition = 2
         drop.xScale = 3
         drop.yScale = 3
         addChild(drop)

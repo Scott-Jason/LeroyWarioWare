@@ -12,6 +12,9 @@ var oh = 0
 //when return back here play something based off win or lose
 var win = false
 var lives = 3
+var timerNode = SKShapeNode()
+var remainingTime: CGFloat = 2.0  // Initial remaining time
+var totalTime: CGFloat = 2.0  // Total time for the timer in seconds
 
 class GameScene: SKScene {
     
@@ -29,7 +32,15 @@ class GameScene: SKScene {
         label.zPosition = 30
         label.fontName = "WarioWare,Inc.MegaMicrogame$Big"
         label.fontColor = UIColor.red
-        label.text = "You have \(lives) lives left!!!"
+        if(win){
+            label.text = " nice! You have \(lives) lives left!!!"
+        }
+        if(win == false){
+            label.text = "awful!!! You have \(lives) lives left!!!"
+        }
+        
+        win = false
+      //  label.text = "You have \(lives) lives left!!!"
         addChild(label)
         //makeBackground();
 
@@ -96,7 +107,7 @@ class GameScene: SKScene {
             //swaps to sammys scene
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
-                let sammy = doomScroll(size: view.bounds.size)
+                let sammy = Coffee(size: view.bounds.size)
                 let transition = SKTransition.fade(withDuration: 0.4)
                 view.presentScene(sammy, transition: transition)
             }

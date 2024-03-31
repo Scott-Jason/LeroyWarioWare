@@ -3,20 +3,25 @@
 //  LeroyWarioWare
 //
 //  Created by Jason Scott on 3/26/24.
-// yafer pong added videos, make it so ball spawns a little after the 2nd video plays a little
+// Add the audio files to yaf laugh and yafboo
 
 import SpriteKit
 import GameplayKit
 
 class Pong: SKScene {
     
+    var canHit = false
     var lock = 0
     //random int when he throws vs not game delay between 2 videos
     var random = Int.random(in: 1...5)
  
     
     //Music
-    let sound = SKAction.playSoundFileNamed("bgEffoc", waitForCompletion: false)
+    
+    
+    let sound = SKAction.playSoundFileNamed("yafPong", waitForCompletion: false)
+    let yafLaugh = SKAction.playSoundFileNamed("yafLaugh", waitForCompletion: false)
+    let yafBoo = SKAction.playSoundFileNamed("yafBoo", waitForCompletion: false)
     //Timer
     var gameT = 0
     
@@ -26,10 +31,10 @@ class Pong: SKScene {
     
     //video of yafer throwing up a pong ball
     
-    var hitScreen = false
+    var hitScreen = true
     var ball = SKSpriteNode()
     var paddle = SKSpriteNode()
-    var asset3 = SKSpriteNode()
+    var yaf = SKSpriteNode()
     var hitbox = SKSpriteNode()
  
     //Labels
@@ -44,9 +49,6 @@ class Pong: SKScene {
     var sm = 7
     var dy = 0
     
-    
-    
-    
     //Textures & Actions
     
     // how to make these happen at the same time
@@ -57,7 +59,10 @@ class Pong: SKScene {
     let swingTexture: [SKTexture] = [
         SKTexture(imageNamed: "pong11"),
         SKTexture(imageNamed: "pong22"),
-        SKTexture(imageNamed: "pong33")
+        SKTexture(imageNamed: "pong33"),
+        SKTexture(imageNamed: "pong22"),
+        SKTexture(imageNamed: "pong11")
+        
       ]
     
 
@@ -69,8 +74,8 @@ class Pong: SKScene {
      //  makeFeature2()
       //  makeFeature3()
         
-        label.text = "Hi there \(random)"
-        label.position = CGPoint(x: 200, y:80)
+        label.text = "Get Ready!"
+        label.position = CGPoint(x: 150, y:80)
         label.zPosition = 8
         addChild(label)
         
@@ -79,42 +84,70 @@ class Pong: SKScene {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let current = touch.location(in: self)
+        if let touch = touches.first{
+            if(hitScreen && canHit){
+                hitScreen = false
+                win = true
+                makeFeature2()
+                makeFeature5()
+            }
+            if(hitScreen){
+                hitScreen = false
+                makeFeature2()
+            }
+        }
         
     }
     
-    
     override func update(_ currentTime: TimeInterval) {
-       
-        
         //updates timer
         gameT += 1
         
         if(gameT > random * 30 && lock == 0){
             lock += 1
-            label.text = "changed now"
+           // label.text = "changed now"
             makeFeature3()
             makeFeature4()
-         
+           // canHit = true
         }
         
-    
         
         if(gameT > (random * 30) + 30){
-            ball.removeAllActions()
+            //ball.removeAllActions()
+        }
+        if(gameT > (random * 30) && win == false){
+            label.text = "Hit!"
+            canHit = true
+        }
+        if(gameT > (random * 30) + 60 && win == false){
+            label.text = "Missed.."
+            label.run(yafBoo)
+            yaf = SKSpriteNode(imageNamed:"badjob")
+            yaf.position = CGPoint(x: 450, y: 150)
+            yaf.xScale = 0.3
+            yaf.yScale = 0.16
+            yaf.zPosition = 1
+            addChild(yaf)
+            canHit = false
         }
         
+        if(remainingTime > 0.0){
+            timerNode.xScale = remainingTime / totalTime
+        }
+        if(remainingTime < 0.0){
+            if let view = self.view {
+                // Assuming NewGameScene is the name of your new GameScene class
+                let sammy = GameScene(size: view.bounds.size)
+                let transition = SKTransition.fade(withDuration: 0.8)
+                view.presentScene(sammy, transition: transition)
+            }
+        }
         
-        
-        
-        timerNode.xScale = remainingTime / totalTime
         if(gameT % 10 == 0){
             remainingTime -= 0.1
         }
         
     }
-    
     
     func makeBackground(){
         let yaf1 = SKVideoNode(fileNamed: "pixYafer.mov")
@@ -127,7 +160,6 @@ class Pong: SKScene {
         yaf1.run(sound)
         
         
-        
         //timer
         timerNode = SKShapeNode(rectOf: CGSize(width: remainingTime*50, height: 5))
         timerNode.position = CGPoint(x: size.width - 50, y: size.height/2)
@@ -137,20 +169,20 @@ class Pong: SKScene {
         addChild(timerNode)
     }
     
-    
     func makeFeature(){ //make pong paddle
         paddle = SKSpriteNode(texture: swingTexture[0])
         paddle.position = CGPoint(x: 400, y: 95)
-        paddle.zPosition = 1
+        paddle.zPosition = 2
         paddle.xScale = 0.2
         paddle.yScale = 0.2
         addChild(paddle)
     }
     
     func makeFeature2(){ //swing
-        let swing = SKAction.animate(with:swingTexture, timePerFrame: 0.08)
-        paddle.run(swing)
-      
+        let swing = SKAction.animate(with:swingTexture, timePerFrame: 0.11)
+        paddle.run(swing){
+            self.hitScreen = true
+        }
     }
     
     func makeFeature3(){ //pong ball throw
@@ -168,7 +200,7 @@ class Pong: SKScene {
         ball.position = CGPoint(x: 330, y: 265)
         ball.xScale = 0.1
         ball.yScale = 0.1
-        ball.zPosition = 4
+        ball.zPosition = 1
         addChild(ball)
         
         let action = SKAction.moveBy(x: -30, y: 0, duration: 8.0)
@@ -182,6 +214,25 @@ class Pong: SKScene {
         ball.run(action)
         ball.run(action0)
         ball.run(zoom)
+    }
+    
+    func makeFeature5(){ //hit ball back
+        let action1 = SKAction.moveBy(x: 0, y: 160, duration: 1.0)
+        let action2 = SKAction.rotate(byAngle: .pi, duration: 0.3)
+        let ac = SKAction.repeatForever(action2)
+        let small = SKAction.scale(by: 0.2, duration: 0.7)
+        let back = SKAction.group([action1, ac, small])
+        ball.run(back)
+        hitScreen = false
+        yaf = SKSpriteNode(imageNamed:"goodjob")
+        yaf.position = CGPoint(x: 450, y: 150)
+        yaf.xScale = 0.3
+        yaf.yScale = 0.16
+        yaf.zPosition = 1
+        addChild(yaf)
+        label.text = "Great!"
+        label.run(yafLaugh)
+        
     }
     
 

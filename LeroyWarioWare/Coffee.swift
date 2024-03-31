@@ -21,6 +21,9 @@ class Coffee: SKScene {
     var gameT = 0
     
     let sound = SKAction.playSoundFileNamed("bgEffoc", waitForCompletion: false)
+    let no = SKAction.playSoundFileNamed("no", waitForCompletion: false)
+    let yeah = SKAction.playSoundFileNamed("Michael yeah", waitForCompletion: false)
+    let laugh = SKAction.playSoundFileNamed("Theo lauigh", waitForCompletion: false)
   
    
     
@@ -123,6 +126,7 @@ class Coffee: SKScene {
             let cycleTime = SKAction.animate(with:evilTexture, timePerFrame: 0.09)
             let repeatForever = SKAction.repeatForever(cycleTime)
             hand.run(repeatForever)
+            hand.run(yeah)
             label3.text = "Correct!"
             label.removeAllActions()
             let textToWrite = "He said Richter..."
@@ -134,8 +138,12 @@ class Coffee: SKScene {
         
         if(label2.frame.contains(current) && nextPart == true){
             let cycleTime = SKAction.animate(with:theoTexture, timePerFrame: 0.09)
+            label2.text = "Perfect!"
+            
+            win = true
             let repeatForever = SKAction.repeatForever(cycleTime)
             hand.run(repeatForever)
+            hand.run(laugh)
         }
     }
     
@@ -145,9 +153,31 @@ class Coffee: SKScene {
         
          //updates timer
         gameT += 1
-        timerNode.xScale = remainingTime / totalTime
+        
+        if(remainingTime > 0.0){
+            timerNode.xScale = remainingTime / totalTime
+        }
+        
         if(gameT % 10 == 0){
             remainingTime -= 0.1
+        }
+        
+
+        if(remainingTime < 0.0){
+            if(win){
+                label.text = "which is funny"
+            }
+            
+            if(win == false){
+                label.text = "mama mia bruh..."
+                label.run(no)
+            }
+            if let view = self.view {
+                // Assuming NewGameScene is the name of your new GameScene class
+                let sammy = GameScene(size: view.bounds.size)
+                let transition = SKTransition.fade(withDuration: 0.8)
+                view.presentScene(sammy, transition: transition)
+            }
         }
         
         //dont need anything for this one i think
@@ -223,8 +253,8 @@ class Coffee: SKScene {
         label.run(shakeAction)
         label.position = CGPoint(x: sx, y:280)
         label1.text = "FEEOC"
-        label2.text = "EEFOC"
-        label3.text = "EEFOK"
+        label2.text = "EEFFOC"
+        label3.text = "EEFFOK"
         let cycleTime = SKAction.animate(with:theoCTexture, timePerFrame: 0.09)
         let repeatForever = SKAction.repeatForever(cycleTime)
         hand.run(repeatForever)

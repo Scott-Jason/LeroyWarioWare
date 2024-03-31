@@ -187,6 +187,7 @@ class BatSwat: SKScene {
         }
     }
     
+    
     func spawnBat(){
         bat = SKSpriteNode(texture: batTex[0])
         bat.zPosition = 10
@@ -197,9 +198,6 @@ class BatSwat: SKScene {
         let repeatForever = SKAction.repeatForever(cycleTime)
         bat.run(repeatForever)
         addChild(bat)
-        
-        
-        
     }
     func spawnBat2(){
         

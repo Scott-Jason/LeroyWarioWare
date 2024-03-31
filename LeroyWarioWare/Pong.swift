@@ -3,7 +3,7 @@
 //  LeroyWarioWare
 //
 //  Created by Jason Scott on 3/26/24.
-// yafer pong minigame WIP
+// yafer pong added videos, make it so ball spawns a little after the 2nd video plays a little
 
 import SpriteKit
 import GameplayKit
@@ -22,7 +22,7 @@ class Pong: SKScene {
     
     //SpriteNodes
     
-    let yafer = SKVideoNode(fileNamed: "sample.mov")
+    //let yafer = SKVideoNode(fileNamed: "yaf1.mov")
     
     //video of yafer throwing up a pong ball
     
@@ -52,24 +52,21 @@ class Pong: SKScene {
     // how to make these happen at the same time
     
     
-
-    
     
     // 3 panels of a transparent hand hitting pong back
     let swingTexture: [SKTexture] = [
-        SKTexture(imageNamed: "michael1"),
-        SKTexture(imageNamed: "michael2")
+        SKTexture(imageNamed: "pong11"),
+        SKTexture(imageNamed: "pong22"),
+        SKTexture(imageNamed: "pong33")
       ]
     
 
-    
-    
     override func sceneDidLoad(){
         remainingTime = 3.8
         totalTime = 3.8
         makeBackground()
         makeFeature()
-        makeFeature2()
+     //  makeFeature2()
       //  makeFeature3()
         
         label.text = "Hi there \(random)"
@@ -85,7 +82,6 @@ class Pong: SKScene {
         guard let touch = touches.first else { return }
         let current = touch.location(in: self)
         
-
     }
     
     
@@ -99,7 +95,11 @@ class Pong: SKScene {
             lock += 1
             label.text = "changed now"
             makeFeature3()
+            makeFeature4()
+         
         }
+        
+    
         
         if(gameT > (random * 30) + 30){
             ball.removeAllActions()
@@ -117,13 +117,16 @@ class Pong: SKScene {
     
     
     func makeBackground(){
-        let background = SKSpriteNode(imageNamed: "black")
-        background.position = CGPoint(x: 400, y: 200) //where its at
-        background.zPosition = 0 //kind of like layers in photoshop 0 furthest back 100000 foreground
-        background.xScale = 5
-        background.yScale = 4
-        addChild(background)
-        background.run(sound) //playing music
+        let yaf1 = SKVideoNode(fileNamed: "pixYafer.mov")
+        yaf1.position = CGPoint(x:410,y:150)
+        yaf1.xScale = 0.7
+        yaf1.yScale = 0.7
+        yaf1.zPosition = 0
+        addChild(yaf1)
+        yaf1.play()
+        yaf1.run(sound)
+        
+        
         
         //timer
         timerNode = SKShapeNode(rectOf: CGSize(width: remainingTime*50, height: 5))
@@ -139,8 +142,8 @@ class Pong: SKScene {
         paddle = SKSpriteNode(texture: swingTexture[0])
         paddle.position = CGPoint(x: 400, y: 95)
         paddle.zPosition = 1
-        paddle.xScale = 0.7
-        paddle.yScale = 0.35
+        paddle.xScale = 0.2
+        paddle.yScale = 0.2
         addChild(paddle)
     }
     
@@ -151,23 +154,34 @@ class Pong: SKScene {
     }
     
     func makeFeature3(){ //pong ball throw
+        let yaf2 = SKVideoNode(fileNamed: "pixYaferhit.mov")
+        yaf2.position = CGPoint(x:410,y:150)
+        yaf2.xScale = 0.7
+        yaf2.yScale = 0.7
+        yaf2.zPosition = 0
+        addChild(yaf2)
+        yaf2.play()
+    }
+    
+    func makeFeature4(){
         ball = SKSpriteNode(imageNamed: "pball")
-        ball.position = CGPoint(x:size.width / 2 , y: size.height / 2)
-        ball.xScale = 0.2
-        ball.yScale = 0.2
+        ball.position = CGPoint(x: 330, y: 265)
+        ball.xScale = 0.1
+        ball.yScale = 0.1
         ball.zPosition = 4
         addChild(ball)
         
+        let action = SKAction.moveBy(x: -30, y: 0, duration: 8.0)
+        let action0 = SKAction.moveBy(x: 30, y:0 , duration: 0.2)
         let action1 = SKAction.moveBy(x: 0, y: -150, duration: 1.0)
         let action2 = SKAction.rotate(byAngle: .pi, duration: 0.3)
         let ac = SKAction.repeatForever(action2)
         let big = SKAction.scale(by: 4, duration: 0.7)
         
         let zoom = SKAction.group([action1, ac, big])
+        ball.run(action)
+        ball.run(action0)
         ball.run(zoom)
-        
-            
-        
     }
     
 

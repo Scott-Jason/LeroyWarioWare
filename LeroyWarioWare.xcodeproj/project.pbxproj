@@ -50,6 +50,9 @@
 		53A1E8622BBA4C5000E0736C /* jstart.mov in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8612BBA4C5000E0736C /* jstart.mov */; };
 		53A1E8652BBA584A00E0736C /* err.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8632BBA584A00E0736C /* err.wav */; };
 		53A1E8662BBA584A00E0736C /* woo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8642BBA584A00E0736C /* woo.wav */; };
+		53A1E8692BBB528800E0736C /* levelwin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8672BBB528800E0736C /* levelwin.mp3 */; };
+		53A1E86A2BBB528800E0736C /* levelloss.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8682BBB528800E0736C /* levelloss.mp3 */; };
+		53A1E86C2BBB54B200E0736C /* ballhit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E86B2BBB54B100E0736C /* ballhit.mp3 */; };
 		53B268A62BAD112400FE61C7 /* SammySoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B268A52BAD112400FE61C7 /* SammySoy.swift */; };
 		53D365C62BADCAA1004F10AF /* BatSwat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D365C52BADCAA1004F10AF /* BatSwat.swift */; };
 		53D365D22BAFB858004F10AF /* doomScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D365D12BAFB858004F10AF /* doomScroll.swift */; };
@@ -101,6 +104,9 @@
 		53A1E8612BBA4C5000E0736C /* jstart.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = jstart.mov; sourceTree = "<group>"; };
 		53A1E8632BBA584A00E0736C /* err.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = err.wav; sourceTree = "<group>"; };
 		53A1E8642BBA584A00E0736C /* woo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = woo.wav; sourceTree = "<group>"; };
+		53A1E8672BBB528800E0736C /* levelwin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelwin.mp3; sourceTree = "<group>"; };
+		53A1E8682BBB528800E0736C /* levelloss.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelloss.mp3; sourceTree = "<group>"; };
+		53A1E86B2BBB54B100E0736C /* ballhit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ballhit.mp3; sourceTree = "<group>"; };
 		53B268A52BAD112400FE61C7 /* SammySoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammySoy.swift; sourceTree = "<group>"; };
 		53B268AB2BAD286000FE61C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		53D365C52BADCAA1004F10AF /* BatSwat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatSwat.swift; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 				53A1E8372BB9DDC800E0736C /* sammy.mp3 */,
 				53A1E8392BB9FFDB00E0736C /* sorry.mp3 */,
 				53A1E83B2BBA08FC00E0736C /* swipe.mp3 */,
+				53A1E86B2BBB54B100E0736C /* ballhit.mp3 */,
 				53A1E83D2BBA09EC00E0736C /* maxBG.mp3 */,
 				53A1E8632BBA584A00E0736C /* err.wav */,
 				53A1E8642BBA584A00E0736C /* woo.wav */,
@@ -179,6 +186,8 @@
 				53A1E8612BBA4C5000E0736C /* jstart.mov */,
 				53A1E85D2BBA49D600E0736C /* jasondown.mov */,
 				53A1E85E2BBA49D600E0736C /* jasonupreal.mov */,
+				53A1E8682BBB528800E0736C /* levelloss.mp3 */,
+				53A1E8672BBB528800E0736C /* levelwin.mp3 */,
 				53A1E8502BBA405200E0736C /* shucks.mp3 */,
 				53A1E8432BBA1AF800E0736C /* anita.mp3 */,
 				53A1E8572BBA42CA00E0736C /* fword.mp3 */,
@@ -253,6 +262,7 @@
 				53A1E8222BB7046800E0736C /* pixYafer.mov in Resources */,
 				5382620C2BAB549B007FC93F /* Main.storyboard in Resources */,
 				53A1E8462BBA1AF900E0736C /* mammamia.mp3 in Resources */,
+				53A1E8692BBB528800E0736C /* levelwin.mp3 in Resources */,
 				53A1E8452BBA1AF900E0736C /* anita.mp3 in Resources */,
 				53A1E85C2BBA462000E0736C /* jasonBG.mp3 in Resources */,
 				53A1E84C2BBA3F5C00E0736C /* pump.mp3 in Resources */,
@@ -268,6 +278,7 @@
 				53A1E8242BB7047500E0736C /* pixYaferhit.mov in Resources */,
 				53A1E8362BB9DBCA00E0736C /* batBG.mp3 in Resources */,
 				53A1E8322BB9D99A00E0736C /* yafPong.mp3 in Resources */,
+				53A1E86C2BBB54B200E0736C /* ballhit.mp3 in Resources */,
 				53A1E8302BB9D7A000E0736C /* Theo lauigh.mp3 in Resources */,
 				53A1E83A2BB9FFDB00E0736C /* sorry.mp3 in Resources */,
 				53A1E8542BBA405200E0736C /* shucks.mp3 in Resources */,
@@ -283,6 +294,7 @@
 				53A1E84A2BBA20FF00E0736C /* jackBG.mp3 in Resources */,
 				53A1E8382BB9DDC800E0736C /* sammy.mp3 in Resources */,
 				53A1E81A2BB37DA900E0736C /* bgEffoc.mp3 in Resources */,
+				53A1E86A2BBB528800E0736C /* levelloss.mp3 in Resources */,
 				53A1E8522BBA405200E0736C /* jasonSweet.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

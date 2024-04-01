@@ -12,13 +12,14 @@ class Pong: SKScene {
     
     var canHit = false
     var lock = 0
+    var on = false
     //random int when he throws vs not game delay between 2 videos
     var random = Int.random(in: 1...5)
  
     
     //Music
     
-    
+    let pongHit = SKAction.playSoundFileNamed("ballhit", waitForCompletion: false)
     let sound = SKAction.playSoundFileNamed("yafPong", waitForCompletion: false)
     let yafLaugh = SKAction.playSoundFileNamed("yafLaugh", waitForCompletion: false)
     let yafBoo = SKAction.playSoundFileNamed("yafBoo", waitForCompletion: false)
@@ -125,14 +126,17 @@ class Pong: SKScene {
                 label.run(yafBoo)
                 lock += 1
             }
+            if(on == false){
+                on = true
+                yaf = SKSpriteNode(imageNamed:"badjob")
+                yaf.position = CGPoint(x: 450, y: 150)
+                yaf.xScale = 0.3
+                yaf.yScale = 0.16
+                yaf.zPosition = 1
+                addChild(yaf)
+                canHit = false
+            }
             
-            yaf = SKSpriteNode(imageNamed:"badjob")
-            yaf.position = CGPoint(x: 450, y: 150)
-            yaf.xScale = 0.3
-            yaf.yScale = 0.16
-            yaf.zPosition = 1
-            addChild(yaf)
-            canHit = false
         }
         
         if(remainingTime > 0.0){
@@ -223,12 +227,14 @@ class Pong: SKScene {
     }
     
     func makeFeature5(){ //hit ball back
+        
         let action1 = SKAction.moveBy(x: 0, y: 160, duration: 1.0)
         let action2 = SKAction.rotate(byAngle: .pi, duration: 0.3)
         let ac = SKAction.repeatForever(action2)
         let small = SKAction.scale(by: 0.2, duration: 0.7)
         let back = SKAction.group([action1, ac, small])
         ball.run(back)
+        ball.run(pongHit)
         hitScreen = false
         yaf = SKSpriteNode(imageNamed:"goodjob")
         yaf.position = CGPoint(x: 450, y: 150)

@@ -11,9 +11,8 @@ import GameplayKit
 class SammySoy: SKScene {
     
     
-    
-    
     let sound = SKAction.playSoundFileNamed("bgSammy", waitForCompletion: false)
+    let sammyD = SKAction.playSoundFileNamed("sammy", waitForCompletion: false)
     var milk = SKSpriteNode()
     var hitScreen = false
     var drop = SKSpriteNode()
@@ -91,6 +90,7 @@ class SammySoy: SKScene {
         if(drop.frame.intersects(hitbox.frame)){
             label.text = "Wow, Soytastic!"
             win = true
+            label.run(sammyD)
             //go back to menu
 
         }

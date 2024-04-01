@@ -14,6 +14,13 @@ import GameplayKit
 
 class doomScroll: SKScene {
     
+    
+    var oLock = true
+    let sound = SKAction.playSoundFileNamed("maxBG", waitForCompletion: false)
+    let swipe = SKAction.playSoundFileNamed("swipe", waitForCompletion: false)
+    let maxWin = SKAction.playSoundFileNamed("anita", waitForCompletion: false)
+    let maxLose = SKAction.playSoundFileNamed("mammamia", waitForCompletion: false)
+    
     var sum = 0
     var initialTouchLocation: CGPoint?
     var currentTouchLocation: CGPoint?
@@ -103,7 +110,7 @@ class doomScroll: SKScene {
         if(lock == false){
             screenSy += sum / 10
         }
-        print(sy)
+        
         
         
         if(sy > 390 && lock == false){
@@ -114,8 +121,9 @@ class doomScroll: SKScene {
                 screenSy += 75
             }
             
+            hitbox.run(swipe)
             whichScreen += 1
-            print("yo")
+            print(whichScreen)
             
         }
       
@@ -152,12 +160,34 @@ class doomScroll: SKScene {
         //timerstuff
         gameT += 1
         
-        timerNode.xScale = remainingTime / totalTime
+        if(remainingTime > 0.0){
+            timerNode.xScale = remainingTime / totalTime
+        }
+        if(remainingTime < 0.0){
+            if(win == false){
+                label.run(maxLose)
+                label.fontColor = UIColor.red
+                label.text = "Doomscroll incomplete..."
+            }
+            if let view = self.view {
+                // Assuming NewGameScene is the name of your new GameScene class
+                let sammy = GameScene(size: view.bounds.size)
+                let transition = SKTransition.fade(withDuration: 0.8)
+                view.presentScene(sammy, transition: transition)
+            }
+        }
+        
         if(gameT % 10 == 0){
             remainingTime -= 0.1
         }
         
-        if(whichScreen == 3){
+        if(whichScreen == 4){
+            win = true
+            if(oLock){
+                label.run(maxWin)
+                oLock = false
+            }
+            label.text = "Great!"
             
             //add swap to game here and timer
             //add sound
@@ -178,6 +208,7 @@ class doomScroll: SKScene {
         background.xScale = 0.37
         background.yScale = 0.23
         addChild(background)
+        background.run(sound)
         
         //timer
         timerNode = SKShapeNode(rectOf: CGSize(width: remainingTime*50, height: 5))
@@ -186,6 +217,13 @@ class doomScroll: SKScene {
         timerNode.fillColor = .green  // Initial color
         timerNode.zRotation = .pi/2
         addChild(timerNode)
+        
+        label.position = CGPoint(x: size.width/2 + 130, y: 340)
+        label.text = "Scroll!"
+        label.zPosition = 4
+        label.fontColor = UIColor.green
+        label.fontSize = 50
+        addChild(label)
         
     }
     

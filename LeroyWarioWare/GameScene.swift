@@ -43,48 +43,10 @@ class GameScene: SKScene {
       //  label.text = "You have \(lives) lives left!!!"
         addChild(label)
         //makeBackground();
+    }
+    
 
-        
-        
-        
-        
-    }
-    
-    override func didMove(to view: SKView) {
-        
-  
-    }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-     
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-      
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-       
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-       
-    }
-    
-    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         gameRunTime += 1
@@ -107,7 +69,7 @@ class GameScene: SKScene {
             //swaps to sammys scene
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
-                let sammy = Pong(size: view.bounds.size)
+                let sammy = jackBelly(size: view.bounds.size)
                 let transition = SKTransition.fade(withDuration: 0.4)
                 view.presentScene(sammy, transition: transition)
             }

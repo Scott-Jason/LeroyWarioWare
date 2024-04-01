@@ -2,9 +2,7 @@
 //  template.swift
 //  LeroyWarioWare
 //
-//  Created by Jason Scott on 3/27/24.
-
-
+//  Created by Jason Scott on 3/31/24.
 
 
 import SpriteKit
@@ -14,12 +12,10 @@ class template: SKScene {
     
     var lock = false
  
- 
-    
-    
     
     //Music
     let sound = SKAction.playSoundFileNamed("bgEffoc", waitForCompletion: false)
+    
     //Timer
     var gameT = 0
    
@@ -34,14 +30,9 @@ class template: SKScene {
     //Labels
     let label = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
     let label1 = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
-    let label2 = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
-    let label3 = SKLabelNode(fontNamed: "WarioWare,Inc.MegaMicrogame$Big")
+
   
-    //Movement Variables
-    var sx = 380 - 100
-    var sy = 170
-    var sm = 7
-    var dy = 0
+ 
     
     
     //Textures & Actions
@@ -73,7 +64,7 @@ class template: SKScene {
         makeFeature()
         makeFeature2()
       
-  
+    
     }
     
     
@@ -91,12 +82,14 @@ class template: SKScene {
         
         //updates timer
         gameT += 1
-        timerNode.xScale = remainingTime / totalTime
+        if(remainingTime > 0.0){
+            timerNode.xScale = remainingTime / totalTime
+        }
+        
         if(gameT % 10 == 0){
             remainingTime -= 0.1
         }
         
-      
         
     }
     
@@ -122,7 +115,7 @@ class template: SKScene {
     func makeFeature(){
         //this will be hand that scrolls
         label1.text = "Maggot Lord"
-        label1.position = CGPoint(x: sx, y: sy + 40)
+    //    label1.position = CGPoint(x: sx, y: sy + 40)
         label1.zPosition = 3
         label1.fontSize = 30
         addChild(label1)
@@ -130,11 +123,7 @@ class template: SKScene {
     
     func makeFeature2(){
         //this will be hand that scrolls
-        label2.text = "Booger Prince"
-        label2.position = CGPoint(x: sx, y: sy - 20 )
-        label2.zPosition = 4
-        label2.fontSize = 30
-        addChild(label2)
+       
     }
     
 

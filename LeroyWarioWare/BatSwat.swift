@@ -10,7 +10,12 @@ import GameplayKit
 
 class BatSwat: SKScene {
     
-
+    var gameT = 0
+    
+    let sound = SKAction.playSoundFileNamed("batBG", waitForCompletion: false)
+    let sorry = SKAction.playSoundFileNamed("sorry", waitForCompletion: false)
+    //add sorry effect
+    
     var gameTime = 0
     var bat = SKSpriteNode()
     var x = Int.random(in: 50...350)
@@ -48,6 +53,8 @@ class BatSwat: SKScene {
     
     
     override func sceneDidLoad(){
+        remainingTime = 17.0
+        totalTime = 17.0
         makeBackground()
         makeRacket()
         //makeSwing()
@@ -105,11 +112,28 @@ class BatSwat: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        //Timercode
         gameTime += 1
+        if(remainingTime > 0.0){
+            timerNode.xScale = remainingTime / totalTime
+        }
+        if(remainingTime < 0.0){
+            if let view = self.view {
+                // Assuming NewGameScene is the name of your new GameScene class
+                let sammy = GameScene(size: view.bounds.size)
+                let transition = SKTransition.fade(withDuration: 0.8)
+                view.presentScene(sammy, transition: transition)
+            }
+        }
+        
+        if(gameT % 10 == 0){
+            remainingTime -= 0.1
+        }
+        
         
         
         //make a random int that if gameTime == int thats what goes in 112
-        if(gameTime % 140 == 0){
+        if(gameTime % 75 == 0){
             let targetPosition = CGPoint(x: 400, y: 115) // Example target position
             let moveToTargetAction = SKAction.move(to: targetPosition, duration: 0.4)
             bat.run(moveToTargetAction){
@@ -145,10 +169,11 @@ class BatSwat: SKScene {
     func makeBackground(){
         let grid = SKSpriteNode(imageNamed: "grid")
         grid.position = CGPoint(x: 430, y: 197) //where its at
-        grid.zPosition = 0 //kind of like layers in photoshop 0 furthest back 100000 foreground
+        grid.zPosition = 1 //kind of like layers in photoshop 0 furthest back 100000 foreground
         grid.xScale = 0.73
         grid.yScale = 0.33
         addChild(grid)
+        grid.run(sound)
        
         // add hitbox to racket
         //make bat add sepearte hitbox to bat
@@ -168,12 +193,20 @@ class BatSwat: SKScene {
         label.text = "Swing!"
         addChild(label)
       
+        //timer
+        timerNode = SKShapeNode(rectOf: CGSize(width: remainingTime*50, height: 5))
+        timerNode.position = CGPoint(x: size.width - 50, y: size.height/2)
+        timerNode.zPosition = 8
+        timerNode.fillColor = .green  // Initial color
+        timerNode.zRotation = .pi/2
+        addChild(timerNode)
     }
     
     func makeSwing(){
         let swing = SKAction.animate(with:swingTex, timePerFrame: 0.08)
         if(bat.frame.intersects(hitbox.frame)){
             label.text = "What has Michael done.."
+            label.run(sorry)
             bat.removeFromParent()
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
@@ -210,7 +243,7 @@ class BatSwat: SKScene {
         racket = SKSpriteNode(texture: swingTex[0])
         racket.texture?.filteringMode = .nearest
         racket.position = CGPoint(x: 400, y: 95)
-        racket.zPosition = 1
+        racket.zPosition = 3
         racket.xScale = 0.7
         racket.yScale = 0.35
         addChild(racket)

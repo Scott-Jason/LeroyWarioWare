@@ -121,7 +121,11 @@ class Pong: SKScene {
         }
         if(gameT > (random * 30) + 60 && win == false){
             label.text = "Missed.."
-            label.run(yafBoo)
+            if(lock == 1){
+                label.run(yafBoo)
+                lock += 1
+            }
+            
             yaf = SKSpriteNode(imageNamed:"badjob")
             yaf.position = CGPoint(x: 450, y: 150)
             yaf.xScale = 0.3
@@ -135,6 +139,8 @@ class Pong: SKScene {
             timerNode.xScale = remainingTime / totalTime
         }
         if(remainingTime < 0.0){
+        
+            
             if let view = self.view {
                 // Assuming NewGameScene is the name of your new GameScene class
                 let sammy = GameScene(size: view.bounds.size)

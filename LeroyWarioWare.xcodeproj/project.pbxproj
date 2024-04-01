@@ -43,6 +43,13 @@
 		53A1E8522BBA405200E0736C /* jasonSweet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E84E2BBA405100E0736C /* jasonSweet.mp3 */; };
 		53A1E8542BBA405200E0736C /* shucks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8502BBA405200E0736C /* shucks.mp3 */; };
 		53A1E8582BBA42CA00E0736C /* fword.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8572BBA42CA00E0736C /* fword.mp3 */; };
+		53A1E85A2BBA44FC00E0736C /* pullup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A1E8592BBA44FC00E0736C /* pullup.swift */; };
+		53A1E85C2BBA462000E0736C /* jasonBG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E85B2BBA462000E0736C /* jasonBG.mp3 */; };
+		53A1E85F2BBA49D700E0736C /* jasondown.mov in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E85D2BBA49D600E0736C /* jasondown.mov */; };
+		53A1E8602BBA49D700E0736C /* jasonupreal.mov in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E85E2BBA49D600E0736C /* jasonupreal.mov */; };
+		53A1E8622BBA4C5000E0736C /* jstart.mov in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8612BBA4C5000E0736C /* jstart.mov */; };
+		53A1E8652BBA584A00E0736C /* err.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8632BBA584A00E0736C /* err.wav */; };
+		53A1E8662BBA584A00E0736C /* woo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53A1E8642BBA584A00E0736C /* woo.wav */; };
 		53B268A62BAD112400FE61C7 /* SammySoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B268A52BAD112400FE61C7 /* SammySoy.swift */; };
 		53D365C62BADCAA1004F10AF /* BatSwat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D365C52BADCAA1004F10AF /* BatSwat.swift */; };
 		53D365D22BAFB858004F10AF /* doomScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D365D12BAFB858004F10AF /* doomScroll.swift */; };
@@ -87,6 +94,13 @@
 		53A1E84E2BBA405100E0736C /* jasonSweet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jasonSweet.mp3; sourceTree = "<group>"; };
 		53A1E8502BBA405200E0736C /* shucks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shucks.mp3; sourceTree = "<group>"; };
 		53A1E8572BBA42CA00E0736C /* fword.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fword.mp3; path = "../../../../Desktop/wario audio/fword.mp3"; sourceTree = "<group>"; };
+		53A1E8592BBA44FC00E0736C /* pullup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pullup.swift; sourceTree = "<group>"; };
+		53A1E85B2BBA462000E0736C /* jasonBG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jasonBG.mp3; sourceTree = "<group>"; };
+		53A1E85D2BBA49D600E0736C /* jasondown.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = jasondown.mov; sourceTree = "<group>"; };
+		53A1E85E2BBA49D600E0736C /* jasonupreal.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = jasonupreal.mov; sourceTree = "<group>"; };
+		53A1E8612BBA4C5000E0736C /* jstart.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = jstart.mov; sourceTree = "<group>"; };
+		53A1E8632BBA584A00E0736C /* err.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = err.wav; sourceTree = "<group>"; };
+		53A1E8642BBA584A00E0736C /* woo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = woo.wav; sourceTree = "<group>"; };
 		53B268A52BAD112400FE61C7 /* SammySoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SammySoy.swift; sourceTree = "<group>"; };
 		53B268AB2BAD286000FE61C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		53D365C52BADCAA1004F10AF /* BatSwat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatSwat.swift; sourceTree = "<group>"; };
@@ -136,6 +150,7 @@
 				53A1E81B2BB386C400E0736C /* Pong.swift */,
 				53A1E81D2BB4575B00E0736C /* template.swift */,
 				53A1E8472BBA1D0700E0736C /* jackBelly.swift */,
+				53A1E8592BBA44FC00E0736C /* pullup.swift */,
 				538262082BAB549B007FC93F /* GameViewController.swift */,
 				5382620A2BAB549B007FC93F /* Main.storyboard */,
 				5382620D2BAB549C007FC93F /* Assets.xcassets */,
@@ -155,14 +170,20 @@
 				53A1E8392BB9FFDB00E0736C /* sorry.mp3 */,
 				53A1E83B2BBA08FC00E0736C /* swipe.mp3 */,
 				53A1E83D2BBA09EC00E0736C /* maxBG.mp3 */,
+				53A1E8632BBA584A00E0736C /* err.wav */,
+				53A1E8642BBA584A00E0736C /* woo.wav */,
 				53A1E83F2BBA0F4000E0736C /* yafBoo.mp3 */,
 				53A1E8402BBA0F4000E0736C /* yafLaugh.mp3 */,
 				53A1E84D2BBA405100E0736C /* jasonNO.mp3 */,
 				53A1E84E2BBA405100E0736C /* jasonSweet.mp3 */,
+				53A1E8612BBA4C5000E0736C /* jstart.mov */,
+				53A1E85D2BBA49D600E0736C /* jasondown.mov */,
+				53A1E85E2BBA49D600E0736C /* jasonupreal.mov */,
 				53A1E8502BBA405200E0736C /* shucks.mp3 */,
 				53A1E8432BBA1AF800E0736C /* anita.mp3 */,
 				53A1E8572BBA42CA00E0736C /* fword.mp3 */,
 				53A1E8492BBA20FF00E0736C /* jackBG.mp3 */,
+				53A1E85B2BBA462000E0736C /* jasonBG.mp3 */,
 				53A1E84B2BBA3F5C00E0736C /* pump.mp3 */,
 				53A1E8442BBA1AF900E0736C /* mammamia.mp3 */,
 			);
@@ -227,10 +248,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53A1E8662BBA584A00E0736C /* woo.wav in Resources */,
+				53A1E85F2BBA49D700E0736C /* jasondown.mov in Resources */,
 				53A1E8222BB7046800E0736C /* pixYafer.mov in Resources */,
 				5382620C2BAB549B007FC93F /* Main.storyboard in Resources */,
 				53A1E8462BBA1AF900E0736C /* mammamia.mp3 in Resources */,
 				53A1E8452BBA1AF900E0736C /* anita.mp3 in Resources */,
+				53A1E85C2BBA462000E0736C /* jasonBG.mp3 in Resources */,
 				53A1E84C2BBA3F5C00E0736C /* pump.mp3 in Resources */,
 				53A1E8582BBA42CA00E0736C /* fword.mp3 in Resources */,
 				53A1E83E2BBA09ED00E0736C /* maxBG.mp3 in Resources */,
@@ -247,11 +271,14 @@
 				53A1E8302BB9D7A000E0736C /* Theo lauigh.mp3 in Resources */,
 				53A1E83A2BB9FFDB00E0736C /* sorry.mp3 in Resources */,
 				53A1E8542BBA405200E0736C /* shucks.mp3 in Resources */,
+				53A1E8622BBA4C5000E0736C /* jstart.mov in Resources */,
+				53A1E8652BBA584A00E0736C /* err.wav in Resources */,
 				5382620E2BAB549C007FC93F /* Assets.xcassets in Resources */,
 				538262112BAB549C007FC93F /* LaunchScreen.storyboard in Resources */,
 				53A1E82C2BB9D6E500E0736C /* no.mp3 in Resources */,
 				538262052BAB549B007FC93F /* Actions.sks in Resources */,
 				53A1E82E2BB9D72A00E0736C /* Michael yeah.mp3 in Resources */,
+				53A1E8602BBA49D700E0736C /* jasonupreal.mov in Resources */,
 				53A1E8512BBA405200E0736C /* jasonNO.mp3 in Resources */,
 				53A1E84A2BBA20FF00E0736C /* jackBG.mp3 in Resources */,
 				53A1E8382BB9DDC800E0736C /* sammy.mp3 in Resources */,
@@ -276,6 +303,7 @@
 				53D365D22BAFB858004F10AF /* doomScroll.swift in Sources */,
 				53B268A62BAD112400FE61C7 /* SammySoy.swift in Sources */,
 				53D365C62BADCAA1004F10AF /* BatSwat.swift in Sources */,
+				53A1E85A2BBA44FC00E0736C /* pullup.swift in Sources */,
 				53D365D42BB1B9FD004F10AF /* Coffee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

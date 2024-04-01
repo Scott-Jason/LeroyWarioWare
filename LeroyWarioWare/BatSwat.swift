@@ -205,15 +205,10 @@ class BatSwat: SKScene {
     func makeSwing(){
         let swing = SKAction.animate(with:swingTex, timePerFrame: 0.08)
         if(bat.frame.intersects(hitbox.frame)){
+            win = true
             label.text = "What has Michael done.."
             label.run(sorry)
             bat.removeFromParent()
-            if let view = self.view {
-                // Assuming NewGameScene is the name of your new GameScene class
-                let sammy = doomScroll(size: view.bounds.size)
-                let transition = SKTransition.fade(withDuration: 0.8)
-                view.presentScene(sammy, transition: transition)
-            }
         }
         racket.run(swing){
             self.hitScreen = true
